@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+    if (Session["rules"] == null)
+    {
+        Session["rules"] = new List<string>();
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Rules of Fight Club</h1>
+        <ol>
+            @{
+                foreach (string rule in (Session["rules"] as List<string>))
+                {
+                    <li>@rule</li>
+                }
+            }
+        </ol>
+        <form action="~/RulesRedirect.cshtml" method="post">
+            Rule <input type="text" name="rule" />
+            <button type="submit">Add rule</button>
+        </form>
+    </div>
+</body>
+</html>
